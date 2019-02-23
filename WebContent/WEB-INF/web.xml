@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>SpringMVCHelloWorld</display-name>
+
+	<!-- You can have any number of dispatcher servlets. It is not limited to 
+		only one and you can have any name as you wish. -->
+	<!-- The name of the dispatcher servlet is not restricted to <servlet-name>-servlet.xml -->
+	<!-- In the below approach, we follow traditional approach (ie) only one 
+		dispatcher servlet naming dispatcher-servlet.xml -->
+
+	<!-- <servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+ -->
+
+	<!-- Now, for example we will create 2 dispatcher servlets and work with 
+		the same flow -->
+	<!-- The param name should always be "contextConfigLocation" as this is 
+		made by the spring -->
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<description> "contextConfigLocation" should always be a param name</description>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/myapp-servlet.xml,/WEB-INF/Beans.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
